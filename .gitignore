@@ -14,3 +14,5 @@ colour_codes.csv
 CamVid_train.tfrecords
 tfrecords.py
 CamVid
+data_baidu_apollo
+.vscode/
