@@ -16,3 +16,4 @@ tfrecords.py
 CamVid
 data_baidu_apollo
 .vscode/
+tmp
