@@ -29,7 +29,10 @@ def get_label_info(csv_path):
         header = next(file_reader)
         for row in file_reader:
             class_names.append(row[0])
-            label_values.append([int(row[1]), int(row[2]), int(row[3])])
+            if len(row) == 4:
+                label_values.append([int(row[1]), int(row[2]), int(row[3])])
+            elif len(row) == 2:
+                label_values.append([int(row[1])])
         # print(class_dict)
     return class_names, label_values
 
@@ -70,8 +73,15 @@ def one_hot_it(label, label_values):
         semantic_map.append(class_map)
     semantic_map = np.stack(semantic_map, axis=-1)
     # print("Time 2 = ", time.time() - st)
-
     return semantic_map
+
+# def one_hot_it_baidu(label, label_values):
+#     semantic_map = []
+#     for value in label_values:
+#         class_map = (label == value[0])
+#         semantic_map.append(class_map)
+#     semantic_map = np.stack(semantic_map, axis=-1)
+#     return semantic_map
     
 def reverse_one_hot(image):
     """

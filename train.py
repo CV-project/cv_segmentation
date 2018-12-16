@@ -34,9 +34,9 @@ parser.add_argument('--checkpoint_step', type=int, default=5, help='How often to
 parser.add_argument('--validation_step', type=int, default=1, help='How often to perform validation (epochs)')
 parser.add_argument('--image', type=str, default=None, help='The image you want to predict on. Only valid in "predict" mode.')
 parser.add_argument('--continue_training', type=str2bool, default=False, help='Whether to continue training from a checkpoint')
-parser.add_argument('--dataset', type=str, default="CamVid", help='Dataset you are using.')
-parser.add_argument('--crop_height', type=int, default=512, help='Height of cropped input image to network')
-parser.add_argument('--crop_width', type=int, default=512, help='Width of cropped input image to network')
+parser.add_argument('--dataset', type=str, default="data_baidu_apollo", help='Dataset you are using.')
+parser.add_argument('--crop_height', type=int, default=2048, help='Height of cropped input image to network')
+parser.add_argument('--crop_width', type=int, default=2048, help='Width of cropped input image to network')
 parser.add_argument('--batch_size', type=int, default=1, help='Number of images in each batch')
 parser.add_argument('--num_val_images', type=int, default=20, help='The number of images to used for validations')
 parser.add_argument('--h_flip', type=str2bool, default=False, help='Whether to randomly flip the image horizontally for data augmentation')
@@ -172,12 +172,11 @@ for epoch in range(args.epoch_start_i, args.num_epochs):
         for j in range(args.batch_size):
             index = i*args.batch_size + j
             id = id_list[index]
-            input_image = utils.load_image(train_input_names[id])
-            output_image = utils.load_image(train_output_names[id])
+            input_image = utils.load_image_baidu(train_input_names[id])
+            output_image = utils.load_image_baidu(train_output_names[id])
 
             with tf.device('/cpu:0'):
                 input_image, output_image = data_augmentation(input_image, output_image)
-
 
                 # Prep the data. Make sure the labels are in one-hot format
                 input_image = np.float32(input_image) / 255.0
@@ -235,8 +234,8 @@ for epoch in range(args.epoch_start_i, args.num_epochs):
         # Do the validation on a small set of validation images
         for ind in val_indices:
 
-            input_image = np.expand_dims(np.float32(utils.load_image(val_input_names[ind])[:args.crop_height, :args.crop_width]),axis=0)/255.0
-            gt = utils.load_image(val_output_names[ind])[:args.crop_height, :args.crop_width]
+            input_image = np.expand_dims(np.float32(utils.load_image_baidu(val_input_names[ind])[:args.crop_height, :args.crop_width]),axis=0)/255.0
+            gt = utils.load_image_baidu(val_output_names[ind])[:args.crop_height, :args.crop_width]
             gt = helpers.reverse_one_hot(helpers.one_hot_it(gt, label_values))
 
             # st = time.time()
