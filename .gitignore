@@ -1,4 +1,4 @@
-*.pyc
+*pyc
 *.graph
 models/*.graph
 models/*.pyc
@@ -17,3 +17,4 @@ CamVid
 data_baidu_apollo
 .vscode/
 tmp
+data
