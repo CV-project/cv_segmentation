@@ -9,5 +9,5 @@ CUDA_VISIBLE_DEVICES=3 python train.py --crop_height=512 --crop_width=512 --mode
 ## Predict
 
 ```
- python predict.py --image=Images/0001TP_008550.png --checkpoint_path='./checkpoints/latest_model_FC-DenseNet56_CamVid.ckpt' --model=FC-DenseNet56
+ python predict.py --image=Images/0001TP_008550.png --checkpoint_path='./checkpoints/latest_model_FC-DenseNet56_CamVid.ckpt' --model=FC-DenseNet56 --dataset='data/data_baidu_apollo_allseg'
 ```
