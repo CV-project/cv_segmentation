@@ -65,8 +65,8 @@ for ind in range(len(test_input_names)):
     sys.stdout.write("\rRunning test image %d / %d"%(ind+1, len(test_input_names)))
     sys.stdout.flush()
 
-    input_image = np.expand_dims(np.float32(utils.load_image(test_input_names[ind])[:args.crop_height, :args.crop_width]),axis=0)/255.0
-    gt = utils.load_image(test_output_names[ind])[:args.crop_height, :args.crop_width]
+    input_image = np.expand_dims(np.float32(utils.load_image_baidu(test_input_names[ind])[:args.crop_height, :args.crop_width]),axis=0)/255.0
+    gt = utils.load_image_baidu(test_output_names[ind])[:args.crop_height, :args.crop_width]
     gt = helpers.reverse_one_hot(helpers.one_hot_it(gt, label_values))
 
     st = time.time()
@@ -95,8 +95,8 @@ for ind in range(len(test_input_names)):
     
     gt = helpers.colour_code_segmentation(gt, label_values)
 
-    cv2.imwrite("%s/%s_pred.png"%("Test", file_name),cv2.cvtColor(np.uint8(out_vis_image), cv2.COLOR_RGB2BGR))
-    cv2.imwrite("%s/%s_gt.png"%("Test", file_name),cv2.cvtColor(np.uint8(gt), cv2.COLOR_RGB2BGR))
+    cv2.imwrite("%s/%s_pred.png"%("Test", file_name), np.uint8(out_vis_image))
+    cv2.imwrite("%s/%s_gt.png"%("Test", file_name), np.uint8(gt))
 
 
 target.close()
