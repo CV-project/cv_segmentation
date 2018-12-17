@@ -2,6 +2,7 @@
 
 ```
 python train.py --crop_height=512 --crop_width=512 --batch_size=10
+CUDA_VISIBLE_DEVICES=3 python train.py --crop_height=512 --crop_width=512 --model=DeepLabV3_plus --dataset=data/apollo_lane
 ```
 
 
