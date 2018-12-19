@@ -1,0 +1,13 @@
+Class, Value
+others,0
+solid_single,30
+solid_double,50
+broken_single,70
+broken_double,90
+solid_broken,110
+crosswalk,130
+arrow,150
+symbol,170
+bump,190
+visible_old_marking,210
+void,255

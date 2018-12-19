@@ -176,6 +176,7 @@ for epoch in range(args.epoch_start_i, args.num_epochs):
             output_image = utils.load_image_baidu(train_output_names[id])
 
             with tf.device('/cpu:0'):
+            # with tf.device('/gpu:3'):
                 input_image, output_image = data_augmentation(input_image, output_image)
 
                 # Prep the data. Make sure the labels are in one-hot format

@@ -18,7 +18,6 @@ img1 = show_with_colormap(c_map_lane, ...
 img2 = show_with_colormap(c_map_lane, ...
     '/Users/zhangyong/projects/cv_segmentation/tmp/170927_064255997_Camera_5_pred.png');
 
-% img3 = 
 
 function img = show_with_colormap(c_map, img_name)
     figure
