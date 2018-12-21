@@ -34,7 +34,7 @@ parser.add_argument('--checkpoint_step', type=int, default=5, help='How often to
 parser.add_argument('--validation_step', type=int, default=1, help='How often to perform validation (epochs)')
 parser.add_argument('--image', type=str, default=None, help='The image you want to predict on. Only valid in "predict" mode.')
 parser.add_argument('--continue_training', type=str2bool, default=False, help='Whether to continue training from a checkpoint')
-parser.add_argument('--dataset', type=str, default="data_baidu_apollo", help='Dataset you are using.')
+parser.add_argument('--dataset', type=str, default="data/apollo_envseg_data", help='Dataset you are using.')
 parser.add_argument('--crop_height', type=int, default=512, help='Height of cropped input image to network')
 parser.add_argument('--crop_width', type=int, default=512, help='Width of cropped input image to network')
 parser.add_argument('--batch_size', type=int, default=1, help='Number of images in each batch')
